@@ -1,21 +1,12 @@
-/* 
-    DEBUG
-*/
+/* DEBUG */
 .debug{
     background-color: rgba(0, 255, 0, 0.2);
     border: 1px solid black;
 }
 
-/* 
-    GENERAL
-*/
+/* GENERAL */
 .d-flex{
     display: flex;
-}
-
-.flex-center{
-    justify-content: center;
-    align-items: center;
 }
 
 .p-fixed{
@@ -23,4 +14,17 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* GRANDEZZE */
+
+section .search,
+.message{
+    min-height: var(--min-height-small);
+}
+
+section .user,
+section .contact,
+section .send-message{
+    min-height: var(--min-height-medium);
 }
