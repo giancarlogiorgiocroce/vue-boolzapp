@@ -1,0 +1,22 @@
+/* 
+    DEBUG
+*/
+.debug{
+    background-color: rgba(0, 255, 0, 0.2);
+    border: 1px solid black;
+}
+
+/* 
+    GENERAL
+*/
+.d-flex{
+    display: flex;
+}
+
+.p-relative{
+    position: relative;
+}
+
+.p-absolute{
+    position: absolute;
+}
