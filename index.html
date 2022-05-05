@@ -25,31 +25,52 @@
 
             <!-- LISTA AMICI -->
             <section class="debug left">
-                <div class="debug user"></div>
+                <div class="debug user">
+                    <div class="debug user-id">
+                        <img src="img/avatar_io.jpg" alt="user-avatar">
+                        <p class="name">Anna dall'Anna</p>
+                    </div>
+                    <div class="debug user-icons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
                 <div class="debug bell"></div>
                 <div class="debug search"></div>
                 <div class="debug friends">
                     <div 
                         class="debug friend-box"
                         v-for="(user, i) in dataArray">
-                        <div class="image">
+                        <div class="friend-image">
                             <img class="debug" :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
                         </div>
-                        <div class="debug text">{{user.name}}</div>
+                        <div class="debug text">
+                            <p>{{user.name}}</p>
+                            <span>Ultimo messaggio inviato</span>
+                        </div>
                         <div class="debug hour">12.00</div>
                     </div>
-                    <!-- <div class="debug friend-box">
-                        <img class="debug" src="img/avatar_1.jpg" alt="">
-                        <div class="debug text">michele</div>
-                        <div class="debug hour">12.00</div>
-                    </div> -->
                 </div>
             </section>
             <!-- /LISTA AMICI -->
 
             <!-- CHAT ATTIVA -->
             <section class="debug right">
-                <div class="debug contact"></div>
+                <div class="debug contact">
+                    <div class="debug contact-id">
+                        <img :src="`img/avatar${dataArray[currentContactIndex].avatar}.jpg`" :alt="dataArray[currentContactIndex].name">
+                        <div class="contact-text">
+                            <p class="name">{{dataArray[currentContactIndex].name}}</p>
+                            <span>Ultimo accesso oggi alle 12.00</span>
+                        </div>
+                    </div>
+                    <div class="debug contact-icons">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
                 <div class="debug chat">
 
                     <!-- Esempio di chat -->

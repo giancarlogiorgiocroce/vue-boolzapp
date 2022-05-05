@@ -1,8 +1,9 @@
 /* DEBUG */
-.debug{
+/* .debug{
     background-color: rgba(0, 255, 0, 0.2);
     border: 1px solid black;
-}
+} */
+
 
 /* GENERAL */
 .d-flex{
@@ -16,16 +17,49 @@
     transform: translate(-50%, -50%);
 }
 
-/* GRANDEZZE */
 
+/* GRANDEZZE */
 .friend-box,
 section .search,
 .message{
     min-height: var(--small);
 }
 
-section .user,
-section .contact,
 section .send-message{
     min-height: var(--medium);
+}
+
+
+/* IMMAGINI DEI PROFILI */
+.user .user-id img,
+.contact .contact-id img,
+.friend-image img{
+    width: calc(var(--small) - 10px);
+    border-radius: 50%;
+}
+
+
+/* SECTION (LEFT & RIGHT) TOP */
+section .user,
+section .contact{
+    background-color: var(--top-grey);
+    min-height: var(--small);
+    padding: 0 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-id,
+.contact-id{
+    display: flex;
+    align-items: center;
+}
+
+.user-icons i,
+.contact-icons i{
+    margin-right: 10px;
+    font-size: 20px;
+    color: rgb(177, 177, 177);
 }
