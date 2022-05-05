@@ -13,10 +13,14 @@
     display: flex;
 }
 
-.p-relative{
-    position: relative;
+.flex-center{
+    justify-content: center;
+    align-items: center;
 }
 
-.p-absolute{
-    position: absolute;
+.p-fixed{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -11,6 +11,9 @@
 :root{
     --bg-green: rgb(0, 150, 136);
     --bg-grey: rgb(216, 219, 214);
+    --min-height-small: 50px;
+    --min-height-medium: 75px;
+    --min-height-big: 100px;
 }
 /*
     /GENERAL
@@ -18,16 +21,67 @@
 
 
 /*
-    
+    BACKGROUND
 */
+.bg-up{
+    height: calc(100vh / 7);
+    min-height: 50px;
+    background-color: var(--bg-green);
+}
+.bg-down{
+    height: calc(calc(100vh / 7) * 6);
+    background-color: var(--bg-grey);
+}
 /*
-    /
+    /BACKGROUND
 */
 
 
 /*
-    
+    MAIN
 */
+.container{
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+}
+    /* SECTION LEFT */
+section.left{
+    width: 30%;
+}
+
+section .user{
+    min-height: var(--min-height-medium);
+}
+
+section .bell{
+    min-height: var(--min-height-big);
+}
+
+section .search{
+    min-height: var(--min-height-small);
+}
+
+section .friends{
+    height: calc(100% - calc(var(--min-height-small) + var(--min-height-medium) + var(--min-height-big)));
+}
+    /* SECTION RIGHT */
+section.right{
+    width: 70%;
+}
+
+section .contact{
+    min-height: var(--min-height-medium);
+}
+
+section .chat{
+    height: calc(100% - (var(--min-height-medium) * 2));
+}
+
+section .message{
+    min-height: var(--min-height-medium);
+}
+
 /*
-    /
+    /MAIN
 */
