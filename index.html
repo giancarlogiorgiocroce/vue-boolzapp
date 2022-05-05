@@ -28,7 +28,22 @@
                 <div class="debug user"></div>
                 <div class="debug bell"></div>
                 <div class="debug search"></div>
-                <div class="debug friends"></div>
+                <div class="debug friends">
+                    <div 
+                        class="debug friend-box"
+                        v-for="(user, i) in dataArray">
+                        <div class="image">
+                            <img class="debug" :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
+                        </div>
+                        <div class="debug text">{{user.name}}</div>
+                        <div class="debug hour">12.00</div>
+                    </div>
+                    <!-- <div class="debug friend-box">
+                        <img class="debug" src="img/avatar_1.jpg" alt="">
+                        <div class="debug text">michele</div>
+                        <div class="debug hour">12.00</div>
+                    </div> -->
+                </div>
             </section>
             <!-- /LISTA AMICI -->
 
@@ -53,6 +68,7 @@
                             <div class="message received">
                                 Yess
                             </div>
+                        </div>
                     </div>
                     <!-- /Esempio di chat -->
 

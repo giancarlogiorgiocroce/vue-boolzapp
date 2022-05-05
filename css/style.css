@@ -11,9 +11,9 @@
 :root{
     --bg-green: rgb(0, 150, 136);
     --bg-grey: rgb(216, 219, 214);
-    --min-height-small: 50px;
-    --min-height-medium: 75px;
-    --min-height-big: 100px;
+    --small: 50px;
+    --medium: 75px;
+    --big: 100px;
 }
 /*
     /GENERAL
@@ -45,28 +45,56 @@ main .container{
     height: 90vh;
     display: flex;
 }
-    /* SECTION LEFT */
+
+
+/*
+    SECTION LEFT
+*/
 section.left{
     width: 30%;
 }
 
 section .bell{
-    min-height: var(--min-height-big);
+    min-height: var(--big);
 }
 
+    /* FRIENDS */
 section .friends{
-    height: calc(100% - calc(var(--min-height-small) + var(--min-height-medium) + var(--min-height-big)));
+    height: calc(100% - calc(var(--small) + var(--medium) + var(--big)));
+    overflow: auto;
 }
-    /* SECTION RIGHT */
+
+.friend-box{
+    display: flex;
+}
+.image img{
+    width: var(--small);
+    border-radius: 50%;
+    margin: 5px 10px;
+}
+.friend-box .text{
+    width: calc(100% - var(--small) - 10%);
+}
+.friend-box .hour{
+    width: 10%;
+    font-size: 8px;
+}
+/*
+    /SECTION LEFT
+*/
+
+/*
+    SECTION RIGHT
+*/
 section.right{
     width: 70%;
 }
 
 section .chat{
-    height: calc(100% - (var(--min-height-medium) * 2));
+    height: calc(100% - (var(--medium) * 2));
 }
 
-        /* MSG */
+    /* MSG */
 .container-msg{
     width: 100%;
     height: 100%;
@@ -94,6 +122,9 @@ section .chat{
 .message.received{
     background-color: white;
 }
+/*
+    /SECTION RIGHT
+*/
 /*
     /MAIN
 */

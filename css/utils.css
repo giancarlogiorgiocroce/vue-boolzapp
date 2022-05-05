@@ -18,13 +18,14 @@
 
 /* GRANDEZZE */
 
+.friend-box,
 section .search,
 .message{
-    min-height: var(--min-height-small);
+    min-height: var(--small);
 }
 
 section .user,
 section .contact,
 section .send-message{
-    min-height: var(--min-height-medium);
+    min-height: var(--medium);
 }
