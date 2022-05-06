@@ -3,7 +3,7 @@
 */
 main{
     height: 100vh;
-    background: linear-gradient(var(--bg-green) 20%, var(--bg-grey) 0);
+    background: linear-gradient(var(--bg-green) 15%, var(--bg-grey) 0);
     align-items: center;
 }
 
@@ -46,7 +46,6 @@ section .friends{
     width: calc(100% - var(--small) - 10%);
 }
 .friend-box .hour{
-    width: 10%;
     font-size: 8px;
 }
 /*
@@ -84,7 +83,7 @@ section .chat{
     margin: 10px 0;
     display: flex;
 }
-.msg-row.sended{
+.msg-row.sent{
     justify-content: end;
 }
 .msg-row.received{
@@ -95,12 +94,18 @@ section .chat{
     min-width: 40%;
     padding: 10px 10px 15px;
     border-radius: 10px;
+    position: relative;
 }
-.message.sended{
+.message.sent{
     background-color: rgb(213, 249, 186);
 }
 .message.received{
     background-color: white;
+}
+.msg-time{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
     /* /MSG */
 

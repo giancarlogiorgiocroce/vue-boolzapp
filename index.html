@@ -27,11 +27,12 @@
             <section class="debug left">
                 <div class="debug user">
                     <div class="debug user-id">
-                        <img src="img/avatar_io.jpg" alt="user-avatar">
-                        <p class="name">Anna dall'Anna</p>
+                        <img :src="`img/avatar${user.avatar}.jpg`" :alt="user.name">
+                        <p class="name">{{user.name}}</p>
                     </div>
                     <div class="debug user-icons">
-                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-circle-notch"
+                            @click=></i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
@@ -41,15 +42,16 @@
                 <div class="debug friends">
                     <div 
                         class="debug friend-box"
-                        v-for="(user, i) in dataArray">
+                        v-for="(user, i) in dataArray"
+                        @click="changeChat(i)">
                         <div class="friend-image">
                             <img class="debug" :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
                         </div>
                         <div class="debug text">
                             <p>{{user.name}}</p>
-                            <span>Ultimo messaggio inviato</span>
+                            <span>{{user.messages[lastMessage].message}}</span>
                         </div>
-                        <div class="debug hour">12.00</div>
+                        <div class="debug hour">{{user.messages[lastMessage].date}}</div>
                     </div>
                 </div>
             </section>
@@ -75,19 +77,13 @@
 
                     <!-- Esempio di chat -->
                     <div class="container-msg">
-                        <div class="msg-row sended">
-                            <div class="message sended">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni odit, deleniti repellat earum eligendi sed quia autem doloremque dolorem dignissimos. Consequatur assumenda odit facilis alias obcaecati voluptates sed nihil magni.
-                            </div>
-                        </div>
-                        <div class="msg-row received">
-                            <div class="message received">
-                                Funzionoooo!
-                            </div>
-                        </div>
-                        <div class="msg-row">
-                            <div class="message received">
-                                Yess
+                        <div class="msg-row sent"
+                            v-for="(el, i) in dataArray[currentContactIndex].messages"
+                            :class="el.status">
+                            <div class="message"
+                                :class="el.status">
+                                <p>{{el.message}}</p>
+                                <span class="msg-time">{{el.date}}</span>
                             </div>
                         </div>
                     </div>
