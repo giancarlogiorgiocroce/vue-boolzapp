@@ -174,7 +174,9 @@ const app = new Vue({
                 ],
             }
         ],
+
         currentContactIndex: 0,
+        
     },
     methods:{
 

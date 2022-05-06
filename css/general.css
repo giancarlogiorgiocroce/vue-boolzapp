@@ -6,15 +6,30 @@
 
 
 /* GENERAL */
-.d-flex{
-    display: flex;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.p-fixed{
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+:root{
+    --bg-green: rgb(0, 150, 136);
+    --bg-grey: rgb(216, 219, 214);
+    --top-grey: rgb(234, 234, 234);
+    --small: 50px;
+    --medium: 75px;
+}
+
+span{
+    font-size: 10px;
+    color: lightgrey;
+}
+
+
+/* UTILS */
+.d-flex{
+    display: flex;
 }
 
 
@@ -36,6 +51,7 @@ section .send-message{
 .friend-image img{
     width: calc(var(--small) - 10px);
     border-radius: 50%;
+    margin-right: 10px;
 }
 
 

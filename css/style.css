@@ -1,51 +1,14 @@
 /*
-    GENERAL
-*/
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-:root{
-    --bg-green: rgb(0, 150, 136);
-    --bg-grey: rgb(216, 219, 214);
-    --top-grey: rgb(234, 234, 234);
-    --small: 50px;
-    --medium: 75px;
-}
-
-span{
-    font-size: 10px;
-    color: lightgrey;
-}
-/*
-    /GENERAL
-*/
-
-
-/*
-    BACKGROUND
-*/
-.bg-up{
-    height: calc(100vh / 7);
-    min-height: 50px;
-    background-color: var(--bg-green);
-}
-.bg-down{
-    height: calc(calc(100vh / 7) * 6);
-    background-color: var(--bg-grey);
-}
-/*
-    /BACKGROUND
-*/
-
-
-/*
     MAIN
 */
+main{
+    height: 100vh;
+    background: linear-gradient(var(--bg-green) 20%, var(--bg-grey) 0);
+    align-items: center;
+}
+
 main .container{
+    margin: 0 auto;
     width: 90vw;
     height: 90vh;
     display: flex;
@@ -72,7 +35,7 @@ section .search{
 section .friends{
     height: calc(100% - calc(var(--small) * 2 + var(--medium)));
     background-color: white;
-    overflow: auto;
+    overflow-y: scroll;
 }
 .friend-box{
     display: flex;
@@ -108,6 +71,7 @@ section .contact span{
 section .chat{
     height: calc(100% - (var(--medium) + var(--small)));
     background-image: url(/img/mine.jpg);
+    overflow-y: scroll;
 }
 
     /* MSG */
@@ -128,7 +92,7 @@ section .chat{
 }
 .message{
     max-width: 60%;
-    min-width: 200px;
+    min-width: 40%;
     padding: 10px 10px 15px;
     border-radius: 10px;
 }
