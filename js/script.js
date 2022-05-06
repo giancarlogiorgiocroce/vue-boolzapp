@@ -220,8 +220,9 @@ const app = new Vue({
         },
         getNow(){
             const today = new Date();
-            const date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+            const date = this.extendDate(today.getDate())+'/'+this.extendDate(today.getMonth()+1)+'/'+today.getFullYear();
+            const time = this.extendDate(today.getHours()) + ":" + this.extendDate(today.getMinutes()) + ":" + this.extendDate(today.getSeconds());
             const now = date +' '+ time;
 
             /*
@@ -244,6 +245,10 @@ const app = new Vue({
                 };
                 this.dataArray[this.currentContactIndex].messages.push(responseMessage);
             }, 1500);
+        },
+        extendDate(date){
+            if(date < 10) return "0"+date;
+            else return date;
         }
     }
 })
