@@ -49,9 +49,9 @@
                         </div>
                         <div class="debug text">
                             <p>{{user.name}}</p>
-                            <span>{{user.messages[lastMessage].message}}</span>
+                            <span>{{user.messages[getLastMessage(user)].message}}</span>
                         </div>
-                        <div class="debug hour">{{user.messages[lastMessage].date}}</div>
+                        <div class="debug hour">{{user.messages[getLastMessage(user)].date}}</div>
                     </div>
                 </div>
             </section>

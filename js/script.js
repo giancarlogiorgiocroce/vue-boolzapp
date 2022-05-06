@@ -192,8 +192,6 @@ const app = new Vue({
         ],
 
         currentContactIndex: 0,
-
-        lastMessage: 0,
    
     },
     methods:{
@@ -202,6 +200,10 @@ const app = new Vue({
         },
         isLastMessage(){
             this.lastMessage = 1;
+        },
+        getLastMessage(user){
+            const lastMessageIndex = user.messages.length-1;
+            return lastMessageIndex;
         }
         // isLastMessage(){
         //     let rightData;
