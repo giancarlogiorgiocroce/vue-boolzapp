@@ -192,6 +192,8 @@ const app = new Vue({
         ],
 
         currentContactIndex: 0,
+
+        inputMessage: null,
    
     },
     methods:{
@@ -204,20 +206,44 @@ const app = new Vue({
         getLastMessage(user){
             const lastMessageIndex = user.messages.length-1;
             return lastMessageIndex;
+        },
+        sendNewMessage(){
+            let newMessage = this.inputMessage;
+            let newMessageArray = {
+                date: this.getNow(),
+                message: newMessage,
+                status: 'sent',
+            };
+            this.dataArray[this.currentContactIndex].messages.push(newMessageArray);
+            this.inputMessage = "";
+            this.getResponse();
+        },
+        getNow(){
+            const today = new Date();
+            const date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            const now = date +' '+ time;
+
+            /*
+                Chissà perché il template literal non funziona; forse perché se lo salvo in una costante unica diventa una stringa? Dovrei metterlo direttamente nel return per farlo funzionare?
+            */
+           
+            // const today = new Date();
+            // const date = `${today.getDate()}/${today.getMonth}/${today.getFullYear}`;
+            // const time = `${today.getHours}:${today.getMinutes}:${today.getSeconds}`;
+            // const now = `${date} ${time}`;
+
+            return now;
+        },
+        getResponse(){
+            setTimeout(()=>{
+                let responseMessage = {
+                    date: this.getNow(),
+                    message: "Hai mai pensato a quanto questa cosa sia palesemente Dialettica Triadica?",
+                    status: "received",
+                };
+                this.dataArray[this.currentContactIndex].messages.push(responseMessage);
+            }, 1500);
         }
-        // isLastMessage(){
-        //     let rightData;
-        //     this.dataArray.forEach(data => {
-        //         rightData = data.messages;
-        //     });
-        //     console.log(rightData);
-        //     let rightMsg;
-        //     rightData.forEach((msg, i) => {
-        //         if(msg.status === received){
-        //             rightMsg = msg;
-        //         }
-        //         return msg;
-        //     })
-        // }
     }
 })

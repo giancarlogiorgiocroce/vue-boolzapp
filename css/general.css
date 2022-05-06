@@ -26,6 +26,11 @@ span{
     color: grey;
 }
 
+i{
+    font-size: 20px;
+    color: rgb(177, 177, 177);
+}
+
 
 /* UTILS */
 .d-flex{
@@ -76,6 +81,4 @@ section .contact{
 .user-icons i,
 .contact-icons i{
     margin-right: 10px;
-    font-size: 20px;
-    color: rgb(177, 177, 177);
 }

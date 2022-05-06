@@ -90,7 +90,20 @@
                     <!-- /Esempio di chat -->
 
                 </div>
-                <div class="debug send-message"></div>
+                <div class="debug send-message d-flex"
+                    @keyup.enter="sendNewMessage()">
+                    <div class="icon-container">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <div class="send-text">
+                        <input type="text"
+                            placeholder="Scrivi un messaggio"
+                            v-model="inputMessage">
+                    </div>
+                    <div class="icon-container">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
             </section>
             <!-- CHAT ATTIVA -->
 
