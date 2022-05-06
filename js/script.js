@@ -194,6 +194,8 @@ const app = new Vue({
         currentContactIndex: 0,
 
         inputMessage: null,
+
+        searching: "",
    
     },
     methods:{
@@ -240,15 +242,15 @@ const app = new Vue({
             setTimeout(()=>{
                 let responseMessage = {
                     date: this.getNow(),
-                    message: "Hai mai pensato a quanto questa cosa sia palesemente Dialettica Triadica?",
+                    message: "Che brutte le risposte a monosillabi",
                     status: "received",
                 };
                 this.dataArray[this.currentContactIndex].messages.push(responseMessage);
-            }, 1500);
+            }, 1000);
         },
         extendDate(date){
             if(date < 10) return "0"+date;
             else return date;
-        }
+        },
     }
 })

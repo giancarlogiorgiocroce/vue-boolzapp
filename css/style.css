@@ -21,14 +21,47 @@ section.left{
     width: 30%;
 }
 
+    /* NOTIFICATION */
 section .bell{
     min-height: var(--medium);
     background-color: rgb(142, 218, 252);
+    align-items: center;
+}
+.bell i{
+    color: rgb(142, 218, 252);
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 50%;
+}
+.bell p{
+    font-size: 14px;
+}
+.bell a{
+    font-size: 10px;
+    color: grey;
+}
+.bell a:hover{
+    color: blue;
 }
 
+    /* SEARCH */
 section .search{
     background-color: white;
     border: 5px solid rgb(243, 238, 234);
+    align-items: center;
+}
+.search-btn{
+    width: 15%;
+    text-align: center;
+}
+.search-btn i{
+    font-size: 16px;
+}
+#search-bar{
+    width: 85%;
+    border: none;
+    outline: thin;
 }
 
     /* FRIENDS */

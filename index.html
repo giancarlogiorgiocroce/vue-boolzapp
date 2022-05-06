@@ -10,8 +10,8 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css' integrity='sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==' crossorigin='anonymous'/>    
     
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     
@@ -21,59 +21,76 @@
     </div>
 
     <main id="app" class="d-flex">
-        <div class="debug container">
+        <div class="container">
 
             <!-- LISTA AMICI -->
-            <section class="debug left">
-                <div class="debug user">
-                    <div class="debug user-id">
+            <section class="left">
+                <div class="user">
+                    <div class="user-id">
                         <img :src="`img/avatar${user.avatar}.jpg`" :alt="user.name">
                         <p class="name">{{user.name}}</p>
                     </div>
-                    <div class="debug user-icons">
+                    <div class="user-icons">
                         <i class="fa-solid fa-circle-notch"
                             @click=></i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <div class="debug bell"></div>
-                <div class="debug search"></div>
-                <div class="debug friends">
+                <div class="bell d-flex">
+                    <div class="icon-container">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="text-container">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                </div>
+                <div class="search d-flex">
+                    <label class="search-btn" for="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <input id="search-bar" 
+                        type="text"
+                        placeholder="Cerca o inizia una nuova chat"
+                        v-model="searching">
+                </div>
+                <div class="friends">
                     <div 
-                        class="debug friend-box"
+                        class="friend-box"
                         v-for="(user, i) in dataArray"
+                        v-if="user.name.toLowerCase().includes(searching)"
                         @click="changeChat(i)">
                         <div class="friend-image">
                             <img class="debug" :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
                         </div>
-                        <div class="debug text">
+                        <div class="text">
                             <p>{{user.name}}</p>
                             <span>{{user.messages[getLastMessage(user)].message}}</span>
                         </div>
-                        <div class="debug hour">{{user.messages[getLastMessage(user)].date}}</div>
+                        <div class="hour">{{user.messages[getLastMessage(user)].date}}</div>
                     </div>
                 </div>
             </section>
             <!-- /LISTA AMICI -->
 
             <!-- CHAT ATTIVA -->
-            <section class="debug right">
-                <div class="debug contact">
-                    <div class="debug contact-id">
+            <section class="right">
+                <div class="contact">
+                    <div class="contact-id">
                         <img :src="`img/avatar${dataArray[currentContactIndex].avatar}.jpg`" :alt="dataArray[currentContactIndex].name">
                         <div class="contact-text">
                             <p class="name">{{dataArray[currentContactIndex].name}}</p>
                             <span>Ultimo accesso oggi alle 12.00</span>
                         </div>
                     </div>
-                    <div class="debug contact-icons">
+                    <div class="contact-icons">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <div class="debug chat">
+                <div class="chat">
 
                     <!-- Esempio di chat -->
                     <div class="container-msg">
@@ -90,7 +107,7 @@
                     <!-- /Esempio di chat -->
 
                 </div>
-                <div class="debug send-message d-flex"
+                <div class="send-message d-flex"
                     @keyup.enter="sendNewMessage()">
                     <div class="icon-container">
                         <i class="fa-regular fa-face-smile"></i>
