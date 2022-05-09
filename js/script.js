@@ -244,7 +244,8 @@ const app = new Vue({
             this.lastMessage = 1;
         },
         getLastMessage(user){
-            return user.messages[user.messages.length-1];
+            const lastMsg = user.messages[user.messages.length-1];
+            return lastMsg;
         },
         sendNewMessage(){
             const newMessage = this.inputMessage;
@@ -264,15 +265,6 @@ const app = new Vue({
             const time = this.extendDate(today.getHours()) + ":" + this.extendDate(today.getMinutes()) + ":" + this.extendDate(today.getSeconds());
             const now = date +' '+ time;
 
-            /*
-                Chissà perché il template literal non funziona; forse perché se lo salvo in una costante unica diventa una stringa? Dovrei metterlo direttamente nel return per farlo funzionare?
-            */
-           
-            // const today = new Date();
-            // const date = `${today.getDate()}/${today.getMonth}/${today.getFullYear}`;
-            // const time = `${today.getHours}:${today.getMinutes}:${today.getSeconds}`;
-            // const now = `${date} ${time}`;
-
             return now;
         },
         extendDate(date){
@@ -288,7 +280,20 @@ const app = new Vue({
             return Math.floor(Math.random() * this.possibleResponses.length);
         },
         removeMessage(el, i){
-            this.dataArray[this.currentContactIndex].messages.splice([i], 1);
-        } //Perché el non è riconosciuto se tento di usarlo per cancellare il messaggio?
+            const emptyMsg = {
+                date: "",
+                message: "",
+                status: "last",
+            };
+
+            if (this.dataArray[this.currentContactIndex].messages.length == 1) {
+                this.dataArray[this.currentContactIndex].messages.push(emptyMsg);
+                this.dataArray[this.currentContactIndex].messages.splice(i, 1);
+                return;
+            } else{
+                this.dataArray[this.currentContactIndex].messages.splice(i, 1);
+            }
+
+        }
     }
 })

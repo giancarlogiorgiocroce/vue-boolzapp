@@ -130,6 +130,9 @@ section .chat{
 .msg-row.received{
     justify-content: start;
 }
+.msg-row.last{
+    display: none;
+}
 .message{
     max-width: 60%;
     min-width: 40%;
