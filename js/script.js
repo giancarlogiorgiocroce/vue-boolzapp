@@ -193,40 +193,6 @@ const app = new Vue({
             }
         ],
 
-        possibleResponses: [
-            {
-                date: "Adesso",
-                message: "Da grandi poteri, derivano grandi responsabilità",
-                status: "received",
-            },
-            {
-                date: "Adesso",
-                message: "La vita è come una scatola di cioccolatini, non sai mai quello che ti capita.",
-                status: "received",
-            },
-            {
-                date: "Adesso",
-                message: "Il mondo è un biscotto, ma se piove si scioglie.",
-                status: "received",
-            },
-            {
-                date: "Adesso",
-                message: "Va bene gli aforismi di Osho, ma ricordiamoci che era un terrorista...",
-                status: "received",
-            },
-            {
-                date: "Adesso",
-                message: "I canederli, alla fin fine, sono solo palle di pane in brodo.",
-                status: "received",
-            },
-            {
-                date: "Adesso",
-                message: "Quando sento parlare Orsini mi prudono solo le mani",
-                status: "received",
-            },
-            
-        ],
-
         currentContactIndex: 0,
 
         inputMessage: null,
@@ -273,11 +239,46 @@ const app = new Vue({
         },
         getResponse(){
             setTimeout(()=>{
-                this.dataArray[this.currentContactIndex].messages.push(this.possibleResponses[this.getRandomNumber()]);
+                const possibleResponses = [
+                    {
+                        date: this.getNow(),
+                        message: "Da grandi poteri, derivano grandi responsabilità",
+                        status: "received",
+                    },
+                    {
+                        date: this.getNow(),
+                        message: "La vita è come una scatola di cioccolatini, non sai mai quello che ti capita.",
+                        status: "received",
+                    },
+                    {
+                        date: this.getNow(),
+                        message: "Il mondo è un biscotto, ma se piove si scioglie.",
+                        status: "received",
+                    },
+                    {
+                        date: this.getNow(),
+                        message: "Va bene gli aforismi di Osho, ma ricordiamoci che era un terrorista...",
+                        status: "received",
+                    },
+                    {
+                        date: this.getNow(),
+                        message: "I canederli, alla fin fine, sono solo palle di pane in brodo.",
+                        status: "received",
+                    },
+                    {
+                        date: this.getNow(),
+                        message: "Quando sento parlare Orsini mi prudono solo le mani",
+                        status: "received",
+                    },
+                    
+                ];
+
+                this.dataArray[this.currentContactIndex].messages.push(possibleResponses[this.getRandomNumber(possibleResponses)]);
+
             }, 1000);
         },
-        getRandomNumber(){
-            return Math.floor(Math.random() * this.possibleResponses.length);
+        getRandomNumber(max){
+            return Math.floor(Math.random() * max.length);
         },
         removeMessage(el, i){
             const emptyMsg = {
