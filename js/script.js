@@ -19,6 +19,7 @@ Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permett
 Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 */
 
+
 const app = new Vue({
     el: "#app",
     data: {
@@ -196,6 +197,8 @@ const app = new Vue({
         inputMessage: null,
 
         searching: "",
+
+        isChevronActive: false,
    
     },
     methods:{
@@ -206,19 +209,18 @@ const app = new Vue({
             this.lastMessage = 1;
         },
         getLastMessage(user){
-            const lastMessageIndex = user.messages.length-1;
-            return lastMessageIndex;
+            return user.messages[user.messages.length-1];
         },
         sendNewMessage(){
-            let newMessage = this.inputMessage;
-            let newMessageArray = {
+            const newMessage = this.inputMessage;
+            const newMessageArray = {
                 date: this.getNow(),
                 message: newMessage,
                 status: 'sent',
             };
             this.dataArray[this.currentContactIndex].messages.push(newMessageArray);
             this.inputMessage = "";
-            this.getResponse();
+            // this.getResponse();
         },
         getNow(){
             const today = new Date();
@@ -240,9 +242,9 @@ const app = new Vue({
         },
         getResponse(){
             setTimeout(()=>{
-                let responseMessage = {
+                const responseMessage = {
                     date: this.getNow(),
-                    message: "Che brutte le risposte a monosillabi",
+                    message: "Ok! (Che brutte le risposte a monosillabi)",
                     status: "received",
                 };
                 this.dataArray[this.currentContactIndex].messages.push(responseMessage);
@@ -252,5 +254,8 @@ const app = new Vue({
             if(date < 10) return "0"+date;
             else return date;
         },
+        removeMessage(el, i){
+            this.dataArray[this.currentContactIndex].messages.splice([i], 1);
+        } //Perché el non è riconosciuto se tento di usarlo per cancellare il messaggio?
     }
 })

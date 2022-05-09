@@ -37,6 +37,7 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
+
                 <div class="bell d-flex">
                     <div class="icon-container">
                         <i class="fa-solid fa-bell-slash"></i>
@@ -46,6 +47,7 @@
                         <a href="#">Attiva notifiche desktop</a>
                     </div>
                 </div>
+
                 <div class="search d-flex">
                     <label class="search-btn" for="search-bar">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -55,20 +57,22 @@
                         placeholder="Cerca o inizia una nuova chat"
                         v-model="searching">
                 </div>
+
                 <div class="friends">
                     <div 
                         class="friend-box"
                         v-for="(user, i) in dataArray"
                         v-if="user.name.toLowerCase().includes(searching)"
-                        @click="changeChat(i)">
+                        @click="changeChat(i)"
+                        :class="currentContactIndex == i ? 'active' : ''">
                         <div class="friend-image">
-                            <img class="debug" :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
+                            <img :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
                         </div>
                         <div class="text">
                             <p>{{user.name}}</p>
-                            <span>{{user.messages[getLastMessage(user)].message}}</span>
+                            <span>{{getLastMessage(user).message}}</span>
                         </div>
-                        <div class="hour">{{user.messages[getLastMessage(user)].date}}</div>
+                        <div class="hour">{{getLastMessage(user).date}}</div>
                     </div>
                 </div>
             </section>
@@ -90,25 +94,35 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <div class="chat">
 
+                <div class="chat">
                     <!-- Esempio di chat -->
                     <div class="container-msg">
                         <div class="msg-row sent"
                             v-for="(el, i) in dataArray[currentContactIndex].messages"
                             :class="el.status">
                             <div class="message"
-                                :class="el.status">
+                                :class="el.status"
+                                @mouseleave="isChevronActive = false">
                                 <p>{{el.message}}</p>
                                 <span class="msg-time">{{el.date}}</span>
+                                <i class="fa-solid fa-chevron-down"
+                                    :class="{active: isChevronActive}"
+                                    @click="isChevronActive = !isChevronActive">
+                                    <div id="chevron-window"
+                                        :class="{active: isChevronActive}">
+                                        <p @click="removeMessage(el, i)"
+                                            >Cancella messaggio</p>
+                                    </div>
+                                </i>
                             </div>
                         </div>
                     </div>
                     <!-- /Esempio di chat -->
-
                 </div>
+
                 <div class="send-message d-flex"
-                    @keyup.enter="sendNewMessage()">
+                    @keyup.enter="sendNewMessage(); getResponse()">
                     <div class="icon-container">
                         <i class="fa-regular fa-face-smile"></i>
                     </div>

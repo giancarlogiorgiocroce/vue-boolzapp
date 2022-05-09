@@ -75,6 +75,13 @@ section .friends{
     padding: 7px 10px 5px;
     border-top: 1px solid lightgrey;
 }
+.friend-box:hover{
+    cursor: pointer;
+    background-color: rgba(177, 177, 177, 0.2);
+}
+.friend-box.active{
+    background-color: rgba(177, 177, 177, 0.6);
+}
 .friend-box .text{
     width: calc(100% - var(--small) - 10%);
 }
@@ -104,6 +111,7 @@ section .chat{
     height: calc(100% - (var(--medium) + var(--small)));
     background-image: url(/img/mine.jpg);
     overflow-y: scroll;
+    overflow-x: none;
 }
 
     /* MSG */
@@ -135,10 +143,57 @@ section .chat{
 .message.received{
     background-color: white;
 }
+.message.sent:hover,
+.message.received:hover{
+    cursor: pointer;
+    background-color: rgba(177, 177, 177, 0.5);
+}
 .msg-time{
     position: absolute;
     right: 5px;
     bottom: 5px;
+}
+
+.message i{
+    display: none;
+
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    color: rgb(177, 177, 177);
+}
+.message:hover i{
+    display: inline;
+}
+.message i.active{
+    transform: rotateX(180deg);
+}
+#chevron-window{
+    display: none;
+}
+#chevron-window.active{
+    display: block;
+    transform: rotateX(180deg);
+
+    position: absolute;
+    bottom: 15px;
+
+    width: 150px;
+    padding: 12px;
+    font-size: 14px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+.received #chevron-window.active{
+    left: 0px;
+}
+.sent #chevron-window.active{   
+    right: 0px;
+}
+#chevron-window.active:hover{
+    color: grey;
+    cursor: pointer;
 }
     /* /MSG */
 
