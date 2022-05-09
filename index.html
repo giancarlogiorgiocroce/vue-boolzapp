@@ -65,6 +65,7 @@
                         v-if="user.name.toLowerCase().includes(searching)"
                         @click="changeChat(i)"
                         :class="currentContactIndex == i ? 'active' : ''">
+                        <!-- La ricerca non funziona come dovrebbe. Se inizio a cercare con una lettera maiuscola che non ha corrispettivo fra le maiuscole iniziali di ogni nome, mi da risultato di lettera mancante. -->
                         <div class="friend-image">
                             <img :src="`img/avatar${user.avatar}.jpg`" :alt="user.avatar">
                         </div>

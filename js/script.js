@@ -22,6 +22,7 @@ Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 
 const app = new Vue({
     el: "#app",
+
     data: {
         user:{
             name: "Anna dall'Anna",
@@ -192,15 +193,49 @@ const app = new Vue({
             }
         ],
 
+        possibleResponses: [
+            {
+                date: "Adesso",
+                message: "Da grandi poteri, derivano grandi responsabilità",
+                status: "received",
+            },
+            {
+                date: "Adesso",
+                message: "La vita è come una scatola di cioccolatini, non sai mai quello che ti capita.",
+                status: "received",
+            },
+            {
+                date: "Adesso",
+                message: "Il mondo è un biscotto, ma se piove si scioglie.",
+                status: "received",
+            },
+            {
+                date: "Adesso",
+                message: "Va bene gli aforismi di Osho, ma ricordiamoci che era un terrorista...",
+                status: "received",
+            },
+            {
+                date: "Adesso",
+                message: "I canederli, alla fin fine, sono solo palle di pane in brodo.",
+                status: "received",
+            },
+            {
+                date: "Adesso",
+                message: "Quando sento parlare Orsini mi prudono solo le mani",
+                status: "received",
+            },
+            
+        ],
+
         currentContactIndex: 0,
 
         inputMessage: null,
 
         searching: "",
 
-        isChevronActive: false,
-   
+        isChevronActive: false, 
     },
+    
     methods:{
         changeChat(i){
             this.currentContactIndex = i;
@@ -240,19 +275,17 @@ const app = new Vue({
 
             return now;
         },
-        getResponse(){
-            setTimeout(()=>{
-                const responseMessage = {
-                    date: this.getNow(),
-                    message: "Ok! (Che brutte le risposte a monosillabi)",
-                    status: "received",
-                };
-                this.dataArray[this.currentContactIndex].messages.push(responseMessage);
-            }, 1000);
-        },
         extendDate(date){
             if(date < 10) return "0"+date;
             else return date;
+        },
+        getResponse(){
+            setTimeout(()=>{
+                this.dataArray[this.currentContactIndex].messages.push(this.possibleResponses[this.getRandomNumber()]);
+            }, 1000);
+        },
+        getRandomNumber(){
+            return Math.floor(Math.random() * this.possibleResponses.length);
         },
         removeMessage(el, i){
             this.dataArray[this.currentContactIndex].messages.splice([i], 1);
