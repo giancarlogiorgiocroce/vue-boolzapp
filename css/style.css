@@ -109,7 +109,7 @@ section .contact span{
 
 section .chat{
     height: calc(100% - (var(--medium) + var(--small)));
-    background-image: url(/img/mine.jpg);
+    background-image: url(../img/mine.jpg);
     overflow-y: scroll;
     overflow-x: none;
 }

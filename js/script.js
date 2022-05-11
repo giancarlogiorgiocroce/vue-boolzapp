@@ -199,7 +199,9 @@ const app = new Vue({
 
         searching: "",
 
-        isChevronActive: false, 
+        isChevronActive: false,
+
+        now: dayjs().format("DD/MM/YYYY HH:mm:ss")
     },
     
     methods:{
@@ -216,22 +218,13 @@ const app = new Vue({
         sendNewMessage(){
             const newMessage = this.inputMessage;
             const newMessageArray = {
-                date: this.getNow(),
+                date: this.now,
                 message: newMessage,
                 status: 'sent',
             };
             this.dataArray[this.currentContactIndex].messages.push(newMessageArray);
             this.inputMessage = "";
             // this.getResponse();
-        },
-        getNow(){
-            const today = new Date();
-
-            const date = this.extendDate(today.getDate())+'/'+this.extendDate(today.getMonth()+1)+'/'+today.getFullYear();
-            const time = this.extendDate(today.getHours()) + ":" + this.extendDate(today.getMinutes()) + ":" + this.extendDate(today.getSeconds());
-            const now = date +' '+ time;
-
-            return now;
         },
         extendDate(date){
             if(date < 10) return "0"+date;
@@ -241,32 +234,32 @@ const app = new Vue({
             setTimeout(()=>{
                 const possibleResponses = [
                     {
-                        date: this.getNow(),
+                        date: this.now,
                         message: "Da grandi poteri, derivano grandi responsabilità",
                         status: "received",
                     },
                     {
-                        date: this.getNow(),
+                        date: this.now,
                         message: "La vita è come una scatola di cioccolatini, non sai mai quello che ti capita.",
                         status: "received",
                     },
                     {
-                        date: this.getNow(),
+                        date: this.now,
                         message: "Il mondo è un biscotto, ma se piove si scioglie.",
                         status: "received",
                     },
                     {
-                        date: this.getNow(),
+                        date: this.now,
                         message: "Va bene gli aforismi di Osho, ma ricordiamoci che era un terrorista...",
                         status: "received",
                     },
                     {
-                        date: this.getNow(),
+                        date: this.now,
                         message: "I canederli, alla fin fine, sono solo palle di pane in brodo.",
                         status: "received",
                     },
                     {
-                        date: this.getNow(),
+                        date: this.now,
                         message: "Quando sento parlare Orsini mi prudono solo le mani",
                         status: "received",
                     },
@@ -290,7 +283,6 @@ const app = new Vue({
             if (this.dataArray[this.currentContactIndex].messages.length == 1) {
                 this.dataArray[this.currentContactIndex].messages.push(emptyMsg);
                 this.dataArray[this.currentContactIndex].messages.splice(i, 1);
-                return;
             } else{
                 this.dataArray[this.currentContactIndex].messages.splice(i, 1);
             }
